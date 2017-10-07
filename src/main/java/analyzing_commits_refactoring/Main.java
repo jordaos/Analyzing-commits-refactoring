@@ -19,7 +19,7 @@ import refdiff.core.rm2.model.refactoring.SDRefactoring;
 import refdiff.core.util.GitServiceImpl;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
     	RefDiff refDiff = new RefDiff();
     	GitService gitService = new GitServiceImpl();
     	try {
