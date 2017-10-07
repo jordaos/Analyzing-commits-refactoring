@@ -20,11 +20,13 @@ import refdiff.core.util.GitServiceImpl;
 
 public class Main {
     public static void main(String[] args){
+    	String branch = "branch-0.3";
+    	
     	RefDiff refDiff = new RefDiff();
     	GitService gitService = new GitServiceImpl();
     	try {
-    		MakeMDFile makeMD = new MakeMDFile("branch-0.2.txt");
-    		Repository repository = gitService.cloneIfNotExists("/home/jordao/Downloads/hadoop_versions/branch-0.2/hadoop", "https://github.com/apache/hadoop.git");
+    		MakeMDFile makeMD = new MakeMDFile(branch);
+    		Repository repository = gitService.cloneIfNotExists("/home/jordao/Downloads/hadoop_versions/" + branch + "/hadoop", "https://github.com/apache/hadoop.git");
     		Git git = Git.wrap(repository);
     		Iterable<RevCommit> commits = git.log().all().call();
     		for (RevCommit commit : commits) {
@@ -35,7 +37,7 @@ public class Main {
     	    	    	makeMD.makeTitle1(commit.getName());
     	    	    	String classification = GetPythonInformations.getClassification(
     	    	    			"/home/jordao/MEGAsync/projeto_bolsa/Analyzing-project-feelings/src/verify-commit-classification.py", 
-    	    	    			"branch-0.2", 
+    	    	    			branch, 
     	    	    			commit.getName(), 
     	    	    			"manual");
     	    	    	makeMD.makeTitle2("Classification: " + classification);

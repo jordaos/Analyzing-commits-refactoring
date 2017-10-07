@@ -10,7 +10,7 @@ public class MakeMDFile {
 	
 	public MakeMDFile(String fileName) throws FileNotFoundException, UnsupportedEncodingException {
 		// TODO Auto-generated constructor stub
-		this.writer = new PrintWriter("/home/jordao/eclipse-workspace/analyzing_commits_refactoring/src/main/resources/" + fileName, "UTF-8");
+		this.writer = new PrintWriter("/home/jordao/eclipse-workspace/analyzing_commits_refactoring/src/main/resources/" + fileName + ".md", "UTF-8");
 	}
 	
 	public void initMessage() {

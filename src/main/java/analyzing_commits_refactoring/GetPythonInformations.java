@@ -14,7 +14,7 @@ public class GetPythonInformations {
 			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
 			String line = in.readLine();
 			//while ((line = in.readLine()) != null) {
-			    System.out.println("LOG: " + line);
+			    //System.out.println("LOG: " + line);
 			//}
 			pr.waitFor();
 
