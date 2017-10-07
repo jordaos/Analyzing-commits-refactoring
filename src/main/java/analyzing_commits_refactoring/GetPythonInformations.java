@@ -5,30 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GetPythonInformations {
-	public static void main(String[] args) {
+	public static String getClassification(String location_classificator, String branch, String sha, String method) {
 		try {
-			ProcessBuilder   ps=new ProcessBuilder("java","-version");
-
-			//From the DOC:  Initially, this property is false, meaning that the 
-			//standard output and error output of a subprocess are sent to two 
-			//separate streams
+			ProcessBuilder ps = new ProcessBuilder("python", location_classificator, branch, sha, method);
 			ps.redirectErrorStream(true);
 
 			Process pr = ps.start();  
-
 			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-			String line;
-			while ((line = in.readLine()) != null) {
-			    System.out.println(line);
-			}
+			String line = in.readLine();
+			//while ((line = in.readLine()) != null) {
+			    System.out.println("LOG: " + line);
+			//}
 			pr.waitFor();
-			System.out.println("ok!");
 
 			in.close();
-			System.exit(0);
+			return line;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return "";
 	}
 }

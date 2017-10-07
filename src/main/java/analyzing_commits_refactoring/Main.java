@@ -33,6 +33,12 @@ public class Main {
     				List<SDRefactoring> refactorings = refDiff.detectAtCommit(repository, commit.getName());
     	    	    if(refactorings.size() > 0) {
     	    	    	makeMD.makeTitle1(commit.getName());
+    	    	    	String classification = GetPythonInformations.getClassification(
+    	    	    			"/home/jordao/MEGAsync/projeto_bolsa/Analyzing-project-feelings/src/verify-commit-classification.py", 
+    	    	    			"branch-0.2", 
+    	    	    			commit.getName(), 
+    	    	    			"manual");
+    	    	    	makeMD.makeTitle2("Classification: " + classification);
     	    	    	makeMD.makeTitle2(refactorings.size() + " refatorações:");
     	    	    	for (SDRefactoring refactoring : refactorings) {
         	    	        makeMD.addListItem(refactoring.toString());
